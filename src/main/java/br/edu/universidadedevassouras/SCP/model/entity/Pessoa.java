@@ -1,4 +1,4 @@
-package br.edu.universidadedevassouras.SCP.model;
+package br.edu.universidadedevassouras.SCP.model.entity;
 
 import lombok.Data;
 

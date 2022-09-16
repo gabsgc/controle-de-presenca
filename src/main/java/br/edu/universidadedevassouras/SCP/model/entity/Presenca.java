@@ -1,5 +1,6 @@
-package br.edu.universidadedevassouras.SCP.model;
+package br.edu.universidadedevassouras.SCP.model.entity;
 
+import br.edu.universidadedevassouras.SCP.model.entity.Pessoa;
 import lombok.Data;
 
 import javax.persistence.*;
