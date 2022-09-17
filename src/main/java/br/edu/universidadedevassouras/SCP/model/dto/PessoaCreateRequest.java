@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Data
-public class PessoaRequest {
+public class PessoaCreateRequest {
 
     @NotEmpty(message = "Por favor, informe o cpf.")
     private String cpf;

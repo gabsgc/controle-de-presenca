@@ -1,8 +1,9 @@
 package br.edu.universidadedevassouras.SCP.service;
 
 import br.edu.universidadedevassouras.SCP.exception.PessoaNotFoundException;
-import br.edu.universidadedevassouras.SCP.model.dto.PessoaRequest;
+import br.edu.universidadedevassouras.SCP.model.dto.PessoaCreateRequest;
 import br.edu.universidadedevassouras.SCP.model.dto.PessoaResponse;
+import br.edu.universidadedevassouras.SCP.model.dto.PessoaUpdateRequest;
 import br.edu.universidadedevassouras.SCP.model.entity.Pessoa;
 import br.edu.universidadedevassouras.SCP.repository.PessoaRepository;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class PessoaService {
         return repository.findById(id);
     }
 
-    public PessoaResponse create(PessoaRequest request) {
+    public PessoaResponse create(PessoaCreateRequest request) {
         var novaPessoa = new Pessoa();
         novaPessoa.setCpf(request.getCpf());
         novaPessoa.setNome(request.getNome());
@@ -52,16 +53,13 @@ public class PessoaService {
         );
     }
 
-    public PessoaResponse update(Long id, PessoaRequest request) {
+    public PessoaResponse update(Long id, PessoaUpdateRequest request) {
         var resultado = repository.findById(id);
         if (resultado.isEmpty()) {
             throw new PessoaNotFoundException();
         }
         var pessoa = resultado.get();
-        pessoa.setNome(request.getNome());
-        pessoa.setMatricula(request.getMatricula());
         pessoa.setDataNascimento(request.getDataNascimento());
-        pessoa.setGenero(request.getGenero());
         pessoa.setFoto(request.getFoto());
         var pessoaSalva = repository.save(pessoa);
 

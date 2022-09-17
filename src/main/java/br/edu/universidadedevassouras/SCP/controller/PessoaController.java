@@ -1,7 +1,8 @@
 package br.edu.universidadedevassouras.SCP.controller;
 
-import br.edu.universidadedevassouras.SCP.model.dto.PessoaRequest;
+import br.edu.universidadedevassouras.SCP.model.dto.PessoaCreateRequest;
 import br.edu.universidadedevassouras.SCP.model.dto.PessoaResponse;
+import br.edu.universidadedevassouras.SCP.model.dto.PessoaUpdateRequest;
 import br.edu.universidadedevassouras.SCP.model.entity.Pessoa;
 import br.edu.universidadedevassouras.SCP.service.PessoaService;
 import org.springframework.http.HttpStatus;
@@ -33,14 +34,14 @@ public class PessoaController {
     }
 
     @PostMapping
-    public ResponseEntity<PessoaResponse> create(@RequestBody PessoaRequest request) {
+    public ResponseEntity<PessoaResponse> create(@RequestBody PessoaCreateRequest request) {
         PessoaResponse resultado = service.create(request);
         return new ResponseEntity<>(resultado, HttpStatus.CREATED);
 
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PessoaResponse> putPessoa(@PathVariable("id") Long id, @RequestBody @Valid PessoaRequest request){
+    public ResponseEntity<PessoaResponse> putPessoa(@PathVariable("id") Long id, @RequestBody @Valid PessoaUpdateRequest request){
         PessoaResponse update = service.update(id, request);
         return new ResponseEntity<>(update, HttpStatus.OK);
     }
