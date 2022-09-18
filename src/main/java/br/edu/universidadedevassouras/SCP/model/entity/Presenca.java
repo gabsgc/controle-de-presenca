@@ -1,6 +1,6 @@
 package br.edu.universidadedevassouras.SCP.model.entity;
 
-import br.edu.universidadedevassouras.SCP.model.entity.Pessoa;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,6 +19,7 @@ public class Presenca {
     @Column(nullable = false)
     private Boolean situacao;
 
+    @JsonIgnore
     @ManyToOne
     private Pessoa pessoa;
 }

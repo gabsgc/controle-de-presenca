@@ -64,13 +64,13 @@ public class PessoaService {
         var pessoaSalva = repository.save(pessoa);
 
         return new PessoaResponse(
-                pessoa.getId(),
-                pessoa.getCpf(),
-                pessoa.getNome(),
-                pessoa.getMatricula(),
-                pessoa.getDataNascimento(),
-                pessoa.getGenero(),
-                pessoa.getFoto()
+                pessoaSalva.getId(),
+                pessoaSalva.getCpf(),
+                pessoaSalva.getNome(),
+                pessoaSalva.getMatricula(),
+                pessoaSalva.getDataNascimento(),
+                pessoaSalva.getGenero(),
+                pessoaSalva.getFoto()
         );
     }
 

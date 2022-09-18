@@ -30,5 +30,5 @@ public class Pessoa {
     private String Foto;
 
     @OneToMany(mappedBy = "pessoa")
-    private List<Presenca> presenca;
+    private List<Presenca> presencas;
 }

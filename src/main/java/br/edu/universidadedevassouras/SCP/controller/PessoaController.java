@@ -28,7 +28,7 @@ public class PessoaController {
     }
 
     @GetMapping(path = "/{id}")
-    public @ResponseBody ResponseEntity<Optional<Pessoa>> getPessoa(@PathVariable("id")Long id){
+    public @ResponseBody ResponseEntity<Optional<Pessoa>> getById(@PathVariable("id")Long id){
         Optional<Pessoa> resultado = service.getById(id);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
@@ -37,11 +37,10 @@ public class PessoaController {
     public ResponseEntity<PessoaResponse> create(@RequestBody PessoaCreateRequest request) {
         PessoaResponse resultado = service.create(request);
         return new ResponseEntity<>(resultado, HttpStatus.CREATED);
-
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PessoaResponse> putPessoa(@PathVariable("id") Long id, @RequestBody @Valid PessoaUpdateRequest request){
+    public ResponseEntity<PessoaResponse> update(@PathVariable("id") Long id, @RequestBody @Valid PessoaUpdateRequest request){
         PessoaResponse update = service.update(id, request);
         return new ResponseEntity<>(update, HttpStatus.OK);
     }
