@@ -4,7 +4,6 @@ import br.edu.universidadedevassouras.SCP.model.dto.JwtRequest;
 import br.edu.universidadedevassouras.SCP.model.dto.JwtResponse;
 import br.edu.universidadedevassouras.SCP.service.UserService;
 import br.edu.universidadedevassouras.SCP.util.JwtUtility;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,7 +28,7 @@ public class HomeController {
     }
 
     @PostMapping()
-    public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) throws Exception{
+    public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) throws Exception {
 
         try {
             authenticationManager.authenticate(
