@@ -31,4 +31,10 @@ public class Pessoa {
 
     @OneToMany(mappedBy = "pessoa")
     private List<Presenca> presencas;
+
+    @Column(nullable = false)
+    private String username;
+
+    @Column(nullable = false)
+    private String password;
 }

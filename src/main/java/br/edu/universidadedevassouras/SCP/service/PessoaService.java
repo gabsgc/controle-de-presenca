@@ -8,7 +8,9 @@ import br.edu.universidadedevassouras.SCP.model.entity.Pessoa;
 import br.edu.universidadedevassouras.SCP.repository.PessoaRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PessoaService {
@@ -19,16 +21,36 @@ public class PessoaService {
         this.repository = repository;
     }
 
-    public Iterable<Pessoa> listAll() {
-        return repository.findAll();
+    public List<PessoaResponse> listAll() {
+        var resultado = repository.findAll();
+
+        return resultado.stream().map(pessoa -> new PessoaResponse(
+                pessoa.getId(),
+                pessoa.getCpf(),
+                pessoa.getNome(),
+                pessoa.getMatricula(),
+                pessoa.getDataNascimento(),
+                pessoa.getGenero(),
+                pessoa.getFoto()
+        )).collect(Collectors.toList());
     }
 
-    public Optional<Pessoa> getById(Long id) {
+    public PessoaResponse getById(Long id) {
         var resultado = repository.findById(id);
         if (resultado.isEmpty()) {
             throw new PessoaNotFoundException();
         }
-        return repository.findById(id);
+        Pessoa pessoa = resultado.get();
+
+        return new PessoaResponse(
+                pessoa.getId(),
+                pessoa.getCpf(),
+                pessoa.getNome(),
+                pessoa.getMatricula(),
+                pessoa.getDataNascimento(),
+                pessoa.getGenero(),
+                pessoa.getFoto()
+        );
     }
 
     public PessoaResponse create(PessoaCreateRequest request) {

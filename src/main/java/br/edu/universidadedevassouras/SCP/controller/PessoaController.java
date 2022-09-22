@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,14 +23,14 @@ public class PessoaController {
     }
 
     @GetMapping
-    public ResponseEntity<Iterable<Pessoa>> getAll() {
-        Iterable<Pessoa> pessoas = service.listAll();
+    public ResponseEntity<List<PessoaResponse>> getAll() {
+        List<PessoaResponse> pessoas = service.listAll();
         return new ResponseEntity<>(pessoas, HttpStatus.OK);
     }
 
     @GetMapping(path = "/{id}")
-    public @ResponseBody ResponseEntity<Optional<Pessoa>> getById(@PathVariable("id")Long id){
-        Optional<Pessoa> resultado = service.getById(id);
+    public @ResponseBody ResponseEntity<PessoaResponse> getById(@PathVariable("id")Long id){
+        PessoaResponse resultado = service.getById(id);
         return new ResponseEntity<>(resultado, HttpStatus.OK);
     }
 
