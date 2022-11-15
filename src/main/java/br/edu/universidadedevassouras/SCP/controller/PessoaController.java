@@ -3,7 +3,6 @@ package br.edu.universidadedevassouras.SCP.controller;
 import br.edu.universidadedevassouras.SCP.model.dto.PessoaCreateRequest;
 import br.edu.universidadedevassouras.SCP.model.dto.PessoaResponse;
 import br.edu.universidadedevassouras.SCP.model.dto.PessoaUpdateRequest;
-import br.edu.universidadedevassouras.SCP.model.entity.Pessoa;
 import br.edu.universidadedevassouras.SCP.service.PessoaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(path = "/pessoa")
 public class PessoaController {
     private final PessoaService service;
